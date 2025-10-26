@@ -1,0 +1,150 @@
+/* src/pages/AboutPage.module.css */
+
+/* --- Hero Section --- */
+.aboutHero {
+  height: 40vh; /* Shorter than the homepage hero */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://i.ibb.co/bK68K0Y/about-hero-team.jpg');
+  background-size: cover;
+  background-position: center 30%;
+}
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+.heroHeading {
+  position: relative;
+  z-index: 2;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #F5F5F5;
+}
+
+/* --- Base Section Styles --- */
+.sectionHeading {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.description {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+/* --- Intro Section --- */
+.introSection {
+  padding: 6rem 0;
+  border-bottom: 1px solid #222;
+}
+.introImage {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Why Services Section --- */
+.whySection {
+  padding: 6rem 0;
+  background-color: #101010;
+  border-bottom: 1px solid #222;
+}
+/* Re-using the service card style from Homepage */
+.whyCard {
+  position: relative;
+  background-color: #1a1a1a;
+  border: 1px solid #222;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* Make cards in a row equal height */
+}
+.cardGlow {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x, 0%) var(--mouse-y, 0%), rgba(229, 9, 20, 0.15) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.whyCard:hover {
+  transform: translateY(-5px);
+  border-color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.whyCard:hover .cardGlow {
+  opacity: 1;
+}
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 0.5rem;
+}
+.cardDesc {
+  font-size: 0.95rem;
+  color: #a0a0a0;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* --- Specials Section --- */
+.specialsSection {
+  padding: 6rem 0;
+  border-bottom: 1px solid #222;
+}
+.specialsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.specialItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.specialIcon {
+  font-size: 1.5rem;
+  color: #E50914; /* Cinematic Red */
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.specialTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 0.5rem;
+}
+.specialDesc {
+  font-size: 1rem;
+  color: #a0a0a0;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .heroHeading {
+    font-size: 2.5rem;
+  }
+  .sectionHeading {
+    font-size: 2.2rem;
+  }
+}

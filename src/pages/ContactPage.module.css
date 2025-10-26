@@ -1,0 +1,128 @@
+/* src/pages/ContactPage.module.css */
+
+/* --- Hero Section --- */
+.contactHero {
+    min-height: 45vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://i.ibb.co/k3tWk0g/contact-hero.jpg'); /* New Image */
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #222;
+}
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+}
+.heroHeading {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #F5F5F5;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+.heroSubheading {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+}
+
+/* --- Form Section --- */
+.formSection {
+    padding: 6rem 0;
+    background-color: #000;
+}
+
+/* --- Info Panel (Left Side) --- */
+.infoPanel {
+    background-color: #101010; /* Slightly lighter black */
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #222;
+    height: 100%; /* Make panel fill height */
+}
+.infoHeading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #F5F5F5;
+    margin-bottom: 1rem;
+}
+.infoText {
+    font-size: 1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: #c0c0c0;
+    font-size: 1rem;
+}
+.infoIcon {
+    color: #E50914; /* Red icon */
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* --- Form Panel (Right Side) --- */
+.formPanel {
+    background-color: #101010;
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #222;
+    height: 100%; /* Make panel fill height */
+}
+.formLabel {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.formControl {
+    background-color: #1f1f1f !important; /* Darker input */
+    border: 1px solid #333 !important;
+    color: #F5F5F5 !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 1rem !important;
+}
+.formControl:focus {
+    box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.25) !important; /* Red focus glow */
+    border-color: #E50914 !important;
+}
+/* Style textarea specifically */
+.formControl[as="textarea"] {
+    min-height: 150px;
+}
+/* Submit Button Style */
+.submitButton {
+    background-color: #E50914;
+    border: 2px solid #E50914;
+    color: #FFFFFF;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 1rem;
+}
+.submitButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(229, 9, 20, 0.2);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .heroHeading {
+        font-size: 2.2rem;
+    }
+}

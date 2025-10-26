@@ -1,0 +1,53 @@
+/* src/index.css */
+
+/* --- IMPORT POPPINS FONT --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* --- OVERRIDE BOOTSTRAP VARIABLES --- */
+body {
+  /* Set the theme to dark */
+  --bs-dark: #000000;
+  --bs-black: #000000;
+  --bs-body-bg: #000000;
+  --bs-body-color: #F5F5F5;
+  
+  /* Set our cinematic red */
+  --bs-primary: #E50914;
+  --bs-primary-rgb: 229, 9, 20;
+
+  /* Set our font */
+  --bs-font-sans-serif: 'Poppins', sans-serif;
+  font-family: var(--bs-font-sans-serif);
+}
+
+/* --- CUSTOM RED SCROLLBAR --- */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #E50914;
+  border-radius: 4px;
+}
+
+/* --- CUSTOM RED SELECTION --- */
+::selection {
+  background-color: #E50914;
+  color: #fff;
+}
+
+/* --- CINEMATIC NOISE OVERLAY --- */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://media.tenor.com/P-N2cl-y-iMAAAAC/noise-tv.gif');
+  background-size: cover;
+  opacity: 0.04;
+  z-index: 9999;
+  pointer-events: none;
+}

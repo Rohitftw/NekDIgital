@@ -1,0 +1,397 @@
+/* src/pages/Homepage.css */
+
+/* --- 1. HERO STYLES --- */
+.heroContainer {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 90px;
+}
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1636760243166-c2c0c62ba633?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(0.4);
+  z-index: 1;
+}
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.heroContentContainer {
+  position: relative;
+  z-index: 3;
+}
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.hero-heading {
+  font-size: 4.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #F5F5F5;
+}
+.hero-ctaButton {
+  background-color: transparent;
+  border: 2px solid #F5F5F5;
+  color: #F5F5F5;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  max-width: 250px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.hero-subText {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #a0a0a0;
+  padding-top: 2rem;
+}
+.hero-playButton {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #E50914;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.hero-playButton:hover {
+  background-color: rgba(229, 9, 20, 0.1);
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+}
+.hero-playIcon {
+  font-size: 2rem;
+  color: #F5F5F5;
+  margin-left: 8px;
+}
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 3rem;
+  }
+}
+
+/* --- 2. CLIENTS STYLES --- */
+.clientsSection {
+  padding: 4rem 0;
+  background-color: #000;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  overflow: hidden;
+}
+.clients-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+.clients-scroller {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+}
+.clients-scrollerInner {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+}
+.clients-logo {
+  height: 40px;
+  max-width: 150px;
+  object-fit: contain;
+  margin: 0 2.5rem;
+  filter: grayscale(1) brightness(1.5);
+  opacity: 0.8;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+.clients-logo:hover {
+  opacity: 1;
+  filter: grayscale(0) drop-shadow(0 0 8px #E50914);
+}
+
+/* --- 3. SERVICES STYLES --- */
+.servicesSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #222;
+}
+.services-heading {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.services-description {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+.services-serviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.services-serviceCard {
+  position: relative;
+  background-color: #1a1a1a;
+  border: 1px solid #222;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.services-cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 0.5rem;
+}
+.services-cardDesc {
+  font-size: 1rem;
+  color: #a0a0a0;
+  margin-bottom: 0;
+}
+.services-cardGlow {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x, 0%) var(--mouse-y, 0%), rgba(229, 9, 20, 0.15) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.services-serviceCard:hover {
+  transform: translateY(-5px);
+  border-color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.services-serviceCard:hover .services-cardGlow {
+  opacity: 1;
+}
+.services-visualContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.services-visualImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+@media (max-width: 992px) {
+  .services-heading {
+    font-size: 2.5rem;
+  }
+  .services-visualContainer {
+    padding-top: 56.25%;
+    margin-top: 2rem;
+  }
+}
+
+/* --- 4. ADSFEATURE STYLES --- */
+.adsSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #101010;
+  border-bottom: 1px solid #222;
+}
+.ads-heading {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.ads-description {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+.ads-ctaButton {
+  background-color: #E50914;
+  border: 2px solid #E50914;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+.ads-ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(229, 9, 20, 0.2);
+}
+.ads-visualContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.ads-visualImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+@media (max-width: 992px) {
+  .ads-heading {
+    font-size: 2.5rem;
+  }
+  .ads-visualContainer {
+    padding-top: 56.25%;
+    margin-bottom: 2rem;
+  }
+}
+
+/* --- 5. OFFERSCTA STYLES --- */
+.ctaSection {
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  border-bottom: 1px solid #222;
+  text-align: center;
+}
+.cta-contentWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cta-heading {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.cta-description {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  margin-bottom: 2.5rem;
+}
+.cta-ctaButton {
+  background-color: #E50914;
+  border: 2px solid #E50914;
+  color: #FFFFFF;
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+}
+@media (max-width: 768px) {
+  .cta-heading {
+    font-size: 2.5rem;
+  }
+}
+
+/* --- 6. FAQ STYLES --- */
+.faqSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  border-bottom: 1px solid #222;
+}
+.faq-heading {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.faq-description {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+.faq-faqImage {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 300px;
+  filter: grayscale(1) brightness(0.8);
+}
+.faq-accordionItem {
+  background-color: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid #222 !important;
+  box-shadow: none !important;
+}
+.faq-accordionBody {
+  color: #a0a0a0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.faq-accordionHeader button {
+  background-color: transparent !important;
+  color: #F5F5F5 !important;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 1.5rem 0.5rem;
+  box-shadow: none !important;
+  border: none !important;
+}
+.faq-accordionHeader button::after {
+  filter: brightness(0.5) sepia(1) hue-rotate(-50deg) saturate(10);
+}
+.faq-accordionItem :global(.show) {
+  background-color: #111;
+}
+.faq-accordionHeader button:not(.collapsed) {
+  color: #E50914 !important;
+  box-shadow: 0px 2px 0px -1px #E50914 !important;
+}
+@media (max-width: 992px) {
+  .faq-heading {
+    font-size: 2.5rem;
+  }
+}
