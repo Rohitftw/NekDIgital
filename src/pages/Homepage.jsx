@@ -7,10 +7,36 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 
-// 1. Import our new single CSS file
-import './Homepage.css'; 
+// 1. Import our single CSS file
+import './Homepage.css';
 
-// 2. Define all our components right here
+// --- Reusable Animation Variants ---
+// Slide in from left
+const slideInLeft = {
+    hidden: { opacity: 0, x: -80 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+// Slide in from right
+const slideInRight = {
+    hidden: { opacity: 0, x: 80 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+// Fade in and slide up ("appear out of nowhere")
+const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+// Stagger item animation (for service cards)
+const staggerItem = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+// Stagger container (for service cards list)
+const cardListVariants = {
+    visible: { transition: { staggerChildren: 0.15 } },
+    hidden: {}
+};
+
 
 // --- HERO COMPONENT ---
 const Hero = () => {
@@ -32,7 +58,7 @@ const Hero = () => {
       <Container fluid className="heroContentContainer mw-1300 h-100">
         <Row className="h-100 align-items-center">
           <Col md={7} lg={6}>
-            <motion.div 
+            <motion.div
               className="heroContent"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -54,10 +80,10 @@ const Hero = () => {
                   </motion.span>
                 ))}
               </motion.h1>
-              <motion.button 
+              <motion.button
                 className="hero-ctaButton"
-                whileHover={{ 
-                  scale: 1.05, 
+                whileHover={{
+                  scale: 1.05,
                   boxShadow: '0 0 25px #E50914',
                   backgroundColor: "#E50914",
                   borderColor: "#E50914",
@@ -72,7 +98,7 @@ const Hero = () => {
             </motion.div>
           </Col>
           <Col md={5} lg={6} className="d-none d-md-flex justify-content-end">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.17, 0.67, 0.83, 0.67] }}
@@ -97,13 +123,14 @@ const Clients = () => {
     'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-5.png',
     'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-6.png',
     'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-9.png',
+    // You can add more logos here from your nekdigital.nl_customers_.jpg screenshot if needed
   ];
-  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos]; // Ensure enough logos for smooth scroll
   const marqueeVariants = {
     animate: {
-      x: [0, -1035],
+      x: [0, -2000], // Adjust based on final logo count & size if needed
       transition: {
-        x: { repeat: Infinity, repeatType: "loop", duration: 20, ease: "linear" },
+        x: { repeat: Infinity, repeatType: "loop", duration: 30, ease: "linear" },
       },
     },
   };
@@ -133,177 +160,224 @@ const Clients = () => {
   );
 };
 
-// --- SERVICES COMPONENT ---
-const Services = () => {
-  const servicesList = [
-    { title: "Web Development", desc: "A stylish, user-friendly website that's easy to discover." },
-    { title: "Google Ads", desc: "Targeted ad campaigns to reach your ideal customers." },
-    { title: "Digital Strategy", desc: "Complete online presence for a set monthly fee." }
-  ];
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", staggerChildren: 0.2 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-  };
-
-  return (
-    <div className="servicesSection">
-      <Container fluid className="mw-1300">
-        <Row className="align-items-center g-5">
-          <Col lg={6} className="text-center"> {/* <-- 1. ADDED text-center HERE */}
-            <motion.div
-              variants={sectionVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <motion.h2 className="services-heading" variants={itemVariants}>
-                Your Digital Growth Partner
-              </motion.h2>
-              <motion.p className="services-description mx-auto" variants={itemVariants}> {/* <-- 2. ADDED mx-auto HERE */}
-                We help establish your business presence for a set monthly fee.
-                From just €159 per month, we handle everything from web design
-                to targeted ad campaigns and brand strategy.
-              </motion.p>
-              {/* Service list remains left-aligned by default */}
-              <div className="services-serviceList text-start"> {/* 3. Ensure service cards stay left-aligned */}
-                {/* ... service cards ... */}
-              </div>
-            </motion.div>
-          </Col>
-          <Col lg={6}>
-            <motion.div 
-              className="services-visualContainer"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-            >
-              <img
-                src="https://i.ibb.co/6P09xGf/digital-growth.jpg"
-                alt="Digital Growth"
-                className="services-visualImage"
-              />
-            </motion.div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
+// --- "WE HELP ESTABLISH" SECTION ---
+const EstablishSection = () => {
+    return (
+        <div className="establishSection">
+            <Container fluid className="mw-1300">
+                <Row className="justify-content-center">
+                    <Col lg={10} xl={8} className="text-center">
+                         <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={fadeInUp} // Fade in up animation
+                         >
+                            <h2 className="establish-heading">
+                                We help establish your business presence for a set monthly fee.
+                            </h2>
+                            <p className="establish-price">
+                                From just €159 per month
+                            </p>
+                            <p className="establish-description">
+                                Neksoft Consultancy Services offers complete digital marketing solutions, including Website Design, Google Ads, and Email Campaigns. We handle your marketing needs, allowing you to focus entirely on managing and growing your business.
+                            </p>
+                        </motion.div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
 };
 
-// --- ADSFEATURE COMPONENT ---
-const AdsFeature = () => {
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", staggerChildren: 0.2 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, x: 30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-  };
+// --- "STYLISH WEBSITE" SECTION (Includes Service Cards) ---
+const StylishWebsiteSection = () => {
+    const servicesList = [
+        { title: "Web Development", desc: "A stylish, user-friendly website that's easy to discover." },
+        { title: "Search engine optimized", desc: "Optimized for Google and designed to leave a lasting impression." }, // Adjusted text
+        { title: "Website support", desc: "Ongoing updates and management included in your subscription." }, // Adjusted text
+    ];
 
-  return (
-    <div className="adsSection">
-      <Container fluid className="mw-1300">
-        <Row className="align-items-center g-5">
-          <Col lg={6} className="order-lg-2">
-            <motion.div 
-              className="ads-visualContainer"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-            >
-              <img
-                src="https://i.ibb.co/C9H01Jj/ads-dashboard.jpg"
-                alt="Ads Dashboard"
-                className="ads-visualImage"
-              />
-            </motion.div>
-          </Col>
-          <Col lg={6} className="order-lg-1">
-            <motion.div
-              variants={sectionVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <motion.h2 className="ads-heading" variants={itemVariants}>
-                Increase weekly guests with effective Google Ads
-              </motion.h2>
-              <motion.p className="ads-description" variants={itemVariants}>
-                We run highly targeted campaigns to drive qualified traffic to your
-                website, ensuring every click counts towards your growth. 
-                Our team handles strategy, setup, and optimization.
-              </motion.p>
-              <motion.button 
-                className="ads-ctaButton"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, boxShadow: '0 0 25px #E50914' }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-              >
-                View Packages
-              </motion.button>
-            </motion.div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
+    return (
+        <div className="stylishSection">
+            <Container fluid className="mw-1300">
+                <Row className="align-items-center g-5">
+                    {/* Content (Left) - Slides in from Left */}
+                    <Col lg={6}>
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.2 }}
+                            variants={slideInLeft}
+                        >
+                            <h2 className="stylish-heading">
+                                A stylish, user-friendly website that’s easy to discover.
+                            </h2>
+                            <p className="stylish-description">
+                                Your business deserves a website that acts as its perfect online business card—optimized for google and designed to leave a lasting impression. With no start-up costs or commissions, we'll get you online in no time!
+                            </p>
+                            <p className="stylish-description">
+                                We understand your time is valuable, so we handle everything for you. From creation to ongoing updates and management, it's all included in your subscription. Worried about switching providers? Our seamless switching service makes the transition hassle-free.
+                            </p>
+
+                             <motion.div
+                                className="stylish-serviceList"
+                                variants={cardListVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.1 }}
+                             >
+                                {servicesList.map((service, index) => (
+                                  <motion.div
+                                    key={index}
+                                    className="stylish-serviceCard"
+                                    variants={staggerItem}
+                                  >
+                                    <div className="stylish-cardGlow"></div>
+                                    <h3 className="stylish-cardTitle">{service.title}</h3>
+                                    <p className="stylish-cardDesc">{service.desc}</p>
+                                  </motion.div>
+                                ))}
+                             </motion.div>
+
+                            <motion.button
+                                className="stylish-ctaButton"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                View Packages
+                            </motion.button>
+                        </motion.div>
+                    </Col>
+                    {/* Image (Right) - Slides in from Right */}
+                    <Col lg={6}>
+                        <motion.div
+                            className="stylish-visualContainer"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={slideInRight}
+                        >
+                            <img
+                                src="https://nekdigital.nl/wp-content/uploads/2025/01/Untitled-design-6-1.png" // Placeholder
+                                alt="Stylish Website Mockup"
+                                className="stylish-visualImage"
+                            />
+                        </motion.div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
 };
 
-// --- OFFERSCTA COMPONENT ---
-const OffersCTA = () => {
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-  };
-
-  return (
-    <div className="ctaSection">
-      <Container fluid className="mw-1300">
-        <motion.div
-          className="cta-contentWrapper"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.h2 className="cta-heading" variants={sectionVariants}>
-            Exclusive offers and promotions
-          </motion.h2>
-          <motion.p className="cta-description" variants={sectionVariants}>
-            We provide custom packages tailored directly to your needs, 
-            ensuring you get the best value and the most effective strategy 
-            to boost your sales.
-          </motion.p>
-          <motion.button 
-            className="cta-ctaButton"
-            animate={{ 
-              scale: [1, 1.03, 1],
-              boxShadow: [
-                '0 0 20px rgba(229, 9, 20, 0.3)', 
-                '0 0 30px rgba(229, 9, 20, 0.5)', 
-                '0 0 20px rgba(229, 9, 20, 0.3)'
-              ]
-            }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get a Custom Quote
-          </motion.button>
-        </motion.div>
-      </Container>
-    </div>
-  );
+// --- "GOOGLE ADS" SECTION ---
+const GoogleAdsSection = () => {
+    return (
+        <div className="adsSection">
+            <Container fluid className="mw-1300">
+                <Row className="align-items-center g-5">
+                    {/* Image (Left) - Slides in from Left */}
+                    <Col lg={6} className="order-lg-1">
+                         <motion.div
+                            className="ads-visualContainer"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={slideInLeft}
+                        >
+                            <img
+                                src="https://nekdigital.nl/wp-content/uploads/2025/01/Indian-restaurant-in-Amsterdam-1.png"
+                                alt="Ads Dashboard"
+                                className="ads-visualImage"
+                            />
+                        </motion.div>
+                    </Col>
+                    {/* Content (Right) - Slides in from Right */}
+                    <Col lg={6} className="order-lg-2">
+                         <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={slideInRight}
+                        >
+                            <h2 className="ads-heading">
+                                Increase weekly guests with effective Google Ads
+                            </h2>
+                            <p className="ads-description">
+                                We run highly targeted campaigns to drive qualified traffic to your
+                                website, ensuring every click counts towards your growth.
+                                Our team handles strategy, setup, and optimization.
+                            </p>
+                            <motion.button
+                                className="ads-ctaButton"
+                                whileHover={{ scale: 1.05, boxShadow: '0 0 25px #E50914' }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                            >
+                                View Packages
+                            </motion.button>
+                        </motion.div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
 };
 
+// --- "EXCLUSIVE OFFERS" SECTION (CTA) ---
+const OffersCTASection = () => {
+    return (
+        <div className="ctaSection"> {/* We'll update CSS for background here */}
+            <Container fluid className="mw-1300">
+                <Row className="align-items-center g-5">
+                    {/* Image (Left) - Slides in from Left */}
+                    <Col lg={6}>
+                        <motion.div
+                            className="cta-visualContainer"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={slideInLeft} // Animation
+                        >
+                            <img
+                                src="https://nekdigital.nl/wp-content/uploads/2025/01/Indian-restaurant-in-Amsterdam-3.png" // Your provided image
+                                alt="Mailboxes iPhone"
+                                className="cta-visualImage"
+                            />
+                        </motion.div>
+                    </Col>
+                    {/* Content (Right) - Slides in from Right */}
+                    <Col lg={6}>
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={slideInRight} // Animation
+                        >
+                            <h2 className="cta-heading">
+                                Exclusive offers and promotions delivered straight to your inbox.
+                            </h2>
+                            <p className="cta-description">
+                                Stay connected with your loyal customers by sending a monthly newsletter featuring discount vouchers, special deals, and exciting offers. It's a personal and impactful way to encourage repeat visits.
+                            </p>
+                            <p className="cta-description">
+                                You choose the content, and we'll create a visually engaging newsletter each month for your customers.
+                            </p>
+                            <motion.button
+                                className="cta-ctaButton"
+                                whileHover={{ scale: 1.05 }} // Basic hover for this button
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                View Packages
+                            </motion.button>
+                        </motion.div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
+};
 // --- FAQ COMPONENT ---
 const FAQ = () => {
   const faqData = [
@@ -329,8 +403,8 @@ const FAQ = () => {
                 Your questions, answered. Find solutions to common inquiries
                 about our digital services.
               </p>
-              <img 
-                src="https://i.ibb.co/CKN9yF4/faq-image.jpg"
+              <img
+                src="https://www.shutterstock.com/shutterstock/videos/1105023795/thumb/2.jpg?ip=x480"
                 alt="Team working"
                 className="faq-faqImage"
               />
@@ -345,8 +419,8 @@ const FAQ = () => {
             >
               <Accordion alwaysOpen className="faq-accordion">
                 {faqData.map((item) => (
-                  <Accordion.Item 
-                    key={item.eventKey} 
+                  <Accordion.Item
+                    key={item.eventKey}
                     eventKey={item.eventKey}
                     className="faq-accordionItem"
                   >
@@ -368,15 +442,16 @@ const FAQ = () => {
 };
 
 
-// 3. This is the main component for this page
+// --- Main component for this page ---
 const Homepage = () => {
   return (
     <>
       <Hero />
       <Clients />
-      <Services />
-      <AdsFeature />
-      <OffersCTA />
+      <EstablishSection />
+      <StylishWebsiteSection />
+      <GoogleAdsSection />
+      <OffersCTASection />
       <FAQ />
     </>
   );

@@ -15,7 +15,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://images.unsplash.com/photo-1636760243166-c2c0c62ba633?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-image: url('https://haslam.utk.edu/wp-content/uploads/2025/03/iStock-2037006388-scaled.jpg'); /* Your chosen image */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -122,45 +122,85 @@
   flex-wrap: nowrap;
 }
 .clients-logo {
-  height: 80px; /* <-- INCREASED HEIGHT */
-  max-width: 250px; /* <-- Increased max-width proportionally */
+  height: 80px;
+  max-width: 250px;
   object-fit: contain;
-  margin: 0 4rem; /* <-- Increased margin for more space */
-  filter: grayscale(0.2) brightness(0.8);
-  opacity: 0.8;
-  transition: opacity 0.2s ease, filter 0.2s ease;
+  margin: 0 4rem;
+  filter: grayscale(0.6) brightness(1.2); /* Adjusted fade */
+  opacity: 0.85; /* Adjusted opacity */
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 .clients-logo:hover {
   opacity: 1;
-  filter: grayscale(0) drop-shadow(0 0 12px #E50914);
+  filter: grayscale(0) drop-shadow(0 0 8px #E50914); /* Red glow */
 }
 
-/* --- 3. SERVICES STYLES --- */
-.servicesSection {
-  padding: 6rem 0;
+/* --- 3. ESTABLISH SECTION STYLES --- */
+.establishSection {
+  padding: 8rem 0 6rem; /* Adjusted padding */
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid #222;
+  background-color: #101010;
 }
-.services-heading {
+.establish-heading {
   font-size: 3.5rem;
+  font-weight: 600;
+  color: #F5F5F5;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.establish-price {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #c0c0c0;
+    margin-bottom: 2.5rem;
+}
+.establish-description {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  margin-bottom: 0;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 992px) {
+  .establish-heading {
+    font-size: 2.5rem;
+  }
+}
+
+/* --- 4. STYLISH WEBSITE SECTION STYLES --- */
+.stylishSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden; /* Important for slide animations */
+  border-bottom: 1px solid #222;
+  background-color: #000;
+}
+.stylish-heading {
+  font-size: 3rem;
   font-weight: 600;
   color: #F5F5F5;
   margin-bottom: 1rem;
   line-height: 1.2;
 }
-.services-description {
+.stylish-description {
   font-size: 1.1rem;
   color: #a0a0a0;
-  margin-bottom: 2.5rem;
-  max-width: 500px;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
 }
-.services-serviceList {
+/* --- Service Cards within Stylish Section --- */
+.stylish-serviceList {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
-.services-serviceCard {
+.stylish-serviceCard {
   position: relative;
   background-color: #1a1a1a;
   border: 1px solid #222;
@@ -169,18 +209,18 @@
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.services-cardTitle {
+.stylish-cardTitle {
   font-size: 1.25rem;
   font-weight: 600;
   color: #F5F5F5;
   margin-bottom: 0.5rem;
 }
-.services-cardDesc {
+.stylish-cardDesc {
   font-size: 1rem;
   color: #a0a0a0;
   margin-bottom: 0;
 }
-.services-cardGlow {
+.stylish-cardGlow {
   content: '';
   position: absolute;
   top: 0;
@@ -192,23 +232,44 @@
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
-.services-serviceCard:hover {
+.stylish-serviceCard:hover {
   transform: translateY(-5px);
   border-color: #333;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
-.services-serviceCard:hover .services-cardGlow {
+.stylish-serviceCard:hover .stylish-cardGlow {
   opacity: 1;
 }
-.services-visualContainer {
+/* --- End Service Cards --- */
+.stylish-ctaButton {
+  background-color: transparent;
+  border: 2px solid #E50914;
+  color: #E50914;
+  padding: 0.9rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  max-width: fit-content;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+.stylish-ctaButton:hover {
+  background-color: #E50914;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+.stylish-visualContainer {
   position: relative;
   width: 100%;
-  padding-top: 75%;
+  padding-top: 75%; /* Aspect ratio */
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
-.services-visualImage {
+.stylish-visualImage {
   position: absolute;
   top: 0;
   left: 0;
@@ -218,25 +279,26 @@
   filter: brightness(0.8);
 }
 @media (max-width: 992px) {
-  .services-heading {
-    font-size: 2.5rem;
+  .stylish-heading {
+    font-size: 2.2rem;
   }
-  .services-visualContainer {
+  .stylish-visualContainer {
     padding-top: 56.25%;
     margin-top: 2rem;
   }
 }
 
-/* --- 4. ADSFEATURE STYLES --- */
+
+/* --- 5. ADSFEATURE STYLES --- */
 .adsSection {
   padding: 6rem 0;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* For slide animations */
   background-color: #101010;
   border-bottom: 1px solid #222;
 }
 .ads-heading {
-  font-size: 3.5rem;
+  font-size: 3rem; /* Slightly smaller to fit */
   font-weight: 600;
   color: #F5F5F5;
   margin-bottom: 1rem;
@@ -282,63 +344,106 @@
 }
 @media (max-width: 992px) {
   .ads-heading {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   .ads-visualContainer {
     padding-top: 56.25%;
     margin-bottom: 2rem;
+    /* Ensure correct stacking on mobile */
+     order: 1 !important;
   }
+   .adsSection .order-lg-1 { order: 1 !important; }
+   .adsSection .order-lg-2 { order: 2 !important; }
+
 }
 
-/* --- 5. OFFERSCTA STYLES --- */
+/* --- 6. OFFERSCTA STYLES --- */
 .ctaSection {
-  padding: 6rem 2rem;
+  padding: 6rem 0; /* Consistent padding */
   position: relative;
-  overflow: hidden;
-  background-color: #000;
-  border-bottom: 1px solid #222;
-  text-align: center;
-}
-.cta-contentWrapper {
-  max-width: 800px;
-  margin: 0 auto;
+  overflow: hidden; /* Important for slide animations */
+  /* --- FIX: Back to dark background --- */
+  background-color: #000; 
+  border-bottom: 1px solid #222; /* Keep dark border */
 }
 .cta-heading {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 600;
-  color: #F5F5F5;
+  /* --- FIX: Back to white text --- */
+  color: #F5F5F5; 
   margin-bottom: 1rem;
   line-height: 1.2;
 }
 .cta-description {
   font-size: 1.1rem;
-  color: #a0a0a0;
-  margin-bottom: 2.5rem;
+  /* --- FIX: Back to light gray text --- */
+  color: #a0a0a0; 
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
 }
 .cta-ctaButton {
-  background-color: #E50914;
+  /* --- FIX: Back to RED button --- */
+  background-color: #E50914; 
   border: 2px solid #E50914;
   color: #FFFFFF;
+  /* --- End Fix --- */
   padding: 1rem 2.5rem;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 4px;
-  box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  max-width: fit-content;
 }
-@media (max-width: 768px) {
+.cta-ctaButton:hover {
+  /* --- FIX: Red hover effect --- */
+  background-color: #ff0a16; 
+  border-color: #ff0a16;
+  color: #FFFFFF;
+  /* --- End Fix --- */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3); /* Red glow */
+}
+
+/* Image container styles (should be fine) */
+.cta-visualContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+.cta-visualImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  max-height: 100%; 
+  max-width: 100%;
+  object-fit: contain; 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Keep subtle shadow */
+  /* Optional: Add slight filter if needed for dark theme */
+  /* filter: brightness(0.9); */
+}
+@media (max-width: 992px) {
   .cta-heading {
     font-size: 2.5rem;
   }
+  .cta-visualContainer {
+    padding-top: 75%; 
+    margin-bottom: 2rem; 
+  }
 }
 
-/* --- 6. FAQ STYLES --- */
+/* --- 7. FAQ STYLES --- */
 .faqSection {
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
   background-color: #000;
-  border-bottom: 1px solid #222;
+  /* border-bottom: 1px solid #222; */ /* Remove bottom border for last section */
 }
 .faq-heading {
   font-size: 3.5rem;
@@ -358,7 +463,7 @@
   border-radius: 8px;
   object-fit: cover;
   height: 300px;
-  filter: grayscale(1) brightness(0.8);
+  filter: grayscale(0) brightness(0.8);
 }
 .faq-accordionItem {
   background-color: transparent !important;
