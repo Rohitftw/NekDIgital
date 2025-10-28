@@ -122,17 +122,17 @@
   flex-wrap: nowrap;
 }
 .clients-logo {
-  height: 40px;
-  max-width: 150px;
+  height: 80px; /* <-- INCREASED HEIGHT */
+  max-width: 250px; /* <-- Increased max-width proportionally */
   object-fit: contain;
-  margin: 0 2.5rem;
-  filter: grayscale(1) brightness(1.5);
+  margin: 0 4rem; /* <-- Increased margin for more space */
+  filter: grayscale(0.2) brightness(0.8);
   opacity: 0.8;
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 .clients-logo:hover {
   opacity: 1;
-  filter: grayscale(0) drop-shadow(0 0 8px #E50914);
+  filter: grayscale(0) drop-shadow(0 0 12px #E50914);
 }
 
 /* --- 3. SERVICES STYLES --- */

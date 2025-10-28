@@ -91,12 +91,12 @@ const Hero = () => {
 // --- CLIENTS COMPONENT ---
 const Clients = () => {
   const logos = [
-    'https://i.ibb.co/3sWdYvY/client-logo-1-grey.png',
-    'https://i.ibb.co/L8G0b3G/client-logo-2-grey.png',
-    'https://i.ibb.co/b2V8Jtq/client-logo-3-grey.png',
-    'https://i.ibb.co/s5H10Yg/client-logo-4-grey.png',
-    'https://i.ibb.co/7Q9735V/client-logo-5-grey.png',
-    'https://i.ibb.co/Jqj3NnN/client-logo-6-grey.png',
+    'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-1.png',
+    'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-2.png',
+    'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-3.png',
+    'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-5.png',
+    'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-6.png',
+    'https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-9.png',
   ];
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
   const marqueeVariants = {
@@ -153,7 +153,7 @@ const Services = () => {
     <div className="servicesSection">
       <Container fluid className="mw-1300">
         <Row className="align-items-center g-5">
-          <Col lg={6}>
+          <Col lg={6} className="text-center"> {/* <-- 1. ADDED text-center HERE */}
             <motion.div
               variants={sectionVariants}
               initial="hidden"
@@ -163,23 +163,14 @@ const Services = () => {
               <motion.h2 className="services-heading" variants={itemVariants}>
                 Your Digital Growth Partner
               </motion.h2>
-              <motion.p className="services-description" variants={itemVariants}>
-                We help establish your business presence for a set monthly fee. 
+              <motion.p className="services-description mx-auto" variants={itemVariants}> {/* <-- 2. ADDED mx-auto HERE */}
+                We help establish your business presence for a set monthly fee.
                 From just €159 per month, we handle everything from web design
                 to targeted ad campaigns and brand strategy.
               </motion.p>
-              <div className="services-serviceList">
-                {servicesList.map((service, index) => (
-                  <motion.div 
-                    key={index} 
-                    className="services-serviceCard" 
-                    variants={itemVariants}
-                  >
-                    <div className="services-cardGlow"></div>
-                    <h3 className="services-cardTitle">{service.title}</h3>
-                    <p className="services-cardDesc">{service.desc}</p>
-                  </motion.div>
-                ))}
+              {/* Service list remains left-aligned by default */}
+              <div className="services-serviceList text-start"> {/* 3. Ensure service cards stay left-aligned */}
+                {/* ... service cards ... */}
               </div>
             </motion.div>
           </Col>
