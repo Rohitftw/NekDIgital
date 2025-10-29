@@ -11,6 +11,7 @@ import HowItWorksPage from './pages/HowItWorksPage';
 import PackagesPage from './pages/PackagesPage';
 import ClientsPage from './pages/ClientsPage';
 import ContactPage from './pages/ContactPage'; // <-- 1. IMPORT IT
+import AppointmentPage from './pages/AppointmentPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="packages" element={<PackagesPage />} />
         <Route path="clients" element={<ClientsPage />} />
         <Route path="contact" element={<ContactPage />} /> {/* <-- 2. ADD THIS ROUTE */}
+        <Route path="appointment" element={<AppointmentPage />} />
         
       </Route>
     </Routes>

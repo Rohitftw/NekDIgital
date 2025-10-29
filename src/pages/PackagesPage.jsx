@@ -46,7 +46,7 @@ const PricingSection = () => {
                 "Photo/Video Galleries", "Social Media Integration", "Shared relationship manager + support", "2 Revisions per month (max 2 hours)",
                 "1 Hour strategy call per month"
             ],
-            highlight: false
+            highlight: true
         },
         {
             name: "Growth Engine",
@@ -70,7 +70,7 @@ const PricingSection = () => {
                 "Documentation with stakeholders & staff", "Custom blog design & strategy", "Advanced SEO (local & national)",
                 "Dedicated Relationship Manager + Support"
             ],
-            highlight: false
+            highlight: true
         }
     ];
 

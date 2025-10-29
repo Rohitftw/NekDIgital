@@ -27,10 +27,10 @@ const Footer = () => {
               <span className={styles.logoText}>NekDigital</span>
             </div>
             <p className={styles.footerText}>
-              We boost your brand with digital excellence.
+              Neksoft Consultancy Services offers complete digital marketing solutions, including website design, Google Ads, and email campaigns.
             </p>
             <div className={styles.socialIconGroup}>
-              <SocialIcon href="#" icon={FaFacebookF} />
+              <SocialIcon href="facebook.com" icon={FaFacebookF} />
               <SocialIcon href="#" icon={FaTwitter} />
               <SocialIcon href="#" icon={FaInstagram} />
               <SocialIcon href="#" icon={FaLinkedinIn} />
@@ -47,11 +47,11 @@ const Footer = () => {
           </Col>
 
           <Col md={6} lg={2}>
-            <h5 className={styles.colTitle}>Services</h5>
+            <h5 className={styles.colTitle}>Packages</h5>
             <ul className={styles.linkList}>
-              <li><Link to="/services/web-design">Web Design</Link></li>
-              <li><Link to="/services/google-ads">Google Ads</Link></li>
-              <li><Link to="/services/seo">SEO</Link></li>
+              <li><Link to="/services/web-design">Basic</Link></li>
+              <li><Link to="/services/google-ads">Standard</Link></li>
+              <li><Link to="/services/seo">Premium</Link></li>
             </ul>
           </Col>
 

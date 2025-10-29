@@ -33,7 +33,7 @@ const IntroSection = () => (
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <img 
-              src="https://i.ibb.co/YyTzV4k/about-intro-team.jpg" 
+              src="https://nekdigital.nl/wp-content/uploads/2025/01/overworked-focused-diverse-businesspeople-working-business-company-meeting-office-room-brainstorming-marketing-strategy-late-night-min-1-scaled.jpg" 
               alt="Our Team" 
               className={styles.introImage}
             />

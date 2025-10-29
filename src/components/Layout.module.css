@@ -1,19 +1,18 @@
 /* src/components/Layout.module.css */
 
-/* src/components/Layout.module.css */
-
 .backgroundPattern {
-  position: fixed;
+  position: fixed; /* Keep it fixed */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1; /* Behind content */
+  z-index: -10; /* Make sure it's definitely behind everything */
+  pointer-events: none; /* Prevent it from interfering with clicks */
+  
+  --line-color: rgba(229, 9, 20, 0.1); /* Red lines, slightly more visible */
+  --line-spacing: 60px; /* Grid spacing */
 
-  /* --- Slightly less transparent red --- */
-  --line-color: rgba(229, 9, 20, 0.1); /* Increased alpha from 0.05 to 0.1 */
-  --line-spacing: 60px; /* Increased spacing slightly */
-
+  /* Diagonal grid lines */
   background-image:
     repeating-linear-gradient(
       45deg,
@@ -29,29 +28,16 @@
       transparent 1px,
       transparent var(--line-spacing)
     );
-
-  /* Keep the pulse animation */
-  animation: pulse-glow 5s infinite ease-in-out alternate;
+  
+  /* Pulse Animation */
+  animation: pulse-glow 4s infinite ease-in-out alternate;
 }
 
 @keyframes pulse-glow {
   from {
-    opacity: 0.6; /* Start slightly more visible */
+    opacity: 0.7; /* Start more visible */
   }
   to {
-    opacity: 0.9; /* End more visible */
+    opacity: 1.0; /* End fully visible (but still faint due to line color alpha) */
   }
 }
-
-/* Optional: Slight movement to the grid lines */
-/* Uncomment and adjust animation property if you want drift */
-/*
-@keyframes grid-drift {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 100px; }
-}
-
-.backgroundPattern {
-  animation: pulse-glow 5s infinite ease-in-out alternate, grid-drift 30s linear infinite;
-}
-*/

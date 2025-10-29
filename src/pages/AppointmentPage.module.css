@@ -1,0 +1,130 @@
+/* src/pages/AppointmentPage.module.css */
+
+/* --- Hero Section --- */
+.appointmentHero {
+    min-height: 45vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://i.ibb.co/k3tWk0g/contact-hero.jpg'); /* Re-using contact hero image */
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #222;
+}
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+}
+.heroHeading {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #F5F5F5;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+.heroSubheading {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+}
+
+/* --- Form Section --- */
+.formSection {
+    padding: 6rem 0;
+    background-color: #000;
+}
+.formPanel {
+    background-color: #101010;
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #222;
+}
+.formLabel {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.formControl {
+    background-color: #1f1f1f !important;
+    border: 1px solid #333 !important;
+    color: #F5F5F5 !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 1rem !important;
+}
+.formControl:focus {
+    box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.25) !important;
+    border-color: #E50914 !important;
+}
+/* Fix for date/time picker text color */
+.formControl[type="date"]::-webkit-calendar-picker-indicator,
+.formControl[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* --- Custom Radio Button Styles --- */
+.radioGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 1rem;
+}
+.radioItem {
+    margin-bottom: 0.5rem;
+    color: #c0c0c0;
+}
+.radioItem label { /* The text label */
+    cursor: pointer;
+}
+.radioItem input[type="radio"] {
+    display: none; /* Hide default radio */
+}
+.radioItem label::before { /* The custom circle */
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 0.75rem;
+    border-radius: 50%;
+    border: 2px solid #555;
+    background-color: #1f1f1f;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+}
+.radioItem input[type="radio"]:checked + label::before {
+    background-color: #E50914; /* Red fill */
+    border-color: #E50914; /* Red border */
+    box-shadow: 0 0 5px #E50914;
+}
+
+/* --- Submit Button --- */
+.submitButton {
+    background-color: #E50914;
+    border: 2px solid #E50914;
+    color: #FFFFFF;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 1rem;
+}
+.submitButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(229, 9, 20, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .heroHeading {
+        font-size: 2.2rem;
+    }
+    .radioGroup {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}

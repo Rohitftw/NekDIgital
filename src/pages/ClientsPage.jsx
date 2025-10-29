@@ -27,9 +27,9 @@ const ClientsHero = () => (
 // --- Featured Clients Section ---
 const FeaturedClients = () => {
   const featured = [
-    { name: "Amossys Portable Power", logo: "https://i.ibb.co/3sWdYvY/client-logo-1-grey.png", image: "https://i.ibb.co/fF3yD9M/featured-client-1.jpg", desc: "Revolutionizing portable energy solutions with a strong digital presence." },
-    { name: "Sol ei Luna", logo: "https://i.ibb.co/s5H10Yg/client-logo-4-grey.png", image: "https://i.ibb.co/1Jq0d3g/featured-client-2.jpg", desc: "Bringing unique experiences to light through innovative online campaigns." },
-    { name: "Hindi Universe Foundation", logo: "https://i.ibb.co/Jqj3NnN/client-logo-6-grey.png", image: "https://i.ibb.co/Jqj3NnN/client-logo-6-grey.png", desc: "Connecting cultures and communities with a powerful digital outreach." },
+    { name: "Amossys Portable Power", logo: "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-13.png", image: "C:\Users\rohit\nekdigital-redesign\src\assets\Screenshot 2025-10-29 123531.jpg", desc: "Revolutionizing portable energy solutions with a strong digital presence." },
+    { name: "Sol ei Luna", logo: "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-9.png", image: "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-9.png", desc: "Bringing unique experiences to light through innovative online campaigns." },
+    { name: "Hindi Universe Foundation", logo: "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-6.png", image: "https://i.ibb.co/Jqj3NnN/client-logo-6-grey.png", desc: "Connecting cultures and communities with a powerful digital outreach." },
   ];
 
   return (
@@ -74,16 +74,16 @@ const FeaturedClients = () => {
 // --- All Clients Logo Grid ---
 const AllClientsGrid = () => {
   const allLogos = [
-    "https://i.ibb.co/3sWdYvY/client-logo-1-grey.png", // Amossys
-    "https://i.ibb.co/L8G0b3G/client-logo-2-grey.png", // Bihar Foundation
-    "https://i.ibb.co/b2V8Jtq/client-logo-3-grey.png", // Generic placeholder or another client
-    "https://i.ibb.co/s5H10Yg/client-logo-4-grey.png", // Sol ei Luna
-    "https://i.ibb.co/7Q9735V/client-logo-5-grey.png", // Anandadhara
-    "https://i.ibb.co/Jqj3NnN/client-logo-6-grey.png", // Hindi Universe Foundation
-    "https://i.ibb.co/c86YgX9/client-logo-7-grey.png", // Ligen Power
-    "https://i.ibb.co/h7h3vDq/client-logo-8-grey.png", // Joy Travel Tours
-    "https://i.ibb.co/K21y6vM/client-logo-9-grey.png", // Gandhi Asian Food
-    "https://i.ibb.co/Xz9F31w/client-logo-10-grey.png", // Hindu Milan Mandir
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-13.png", // Amossys
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-3.png", // Bihar Foundation
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-5.png", // Generic placeholder or another client
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-9.png", // Sol ei Luna
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-7.png", // Anandadhara
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-6.png", // Hindi Universe Foundation
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-2.png", // Ligen Power
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-12.png", // Joy Travel Tours
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-10.png", // Gandhi Asian Food
+    "https://nekdigital.nl/wp-content/uploads/2025/01/Ligen-Power-11.png", // Hindu Milan Mandir
     "https://i.ibb.co/L8G0b3G/client-logo-2-grey.png", // Bihar Foundation (repeated for grid fill)
     "https://i.ibb.co/3sWdYvY/client-logo-1-grey.png", // Amossys (repeated for grid fill)
   ];
