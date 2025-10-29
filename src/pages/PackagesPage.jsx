@@ -1,13 +1,14 @@
 // src/pages/PackagesPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // <-- 1. IMPORT LINK
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card'; // Use Bootstrap Cards
-import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+// We don't need 'Button' from react-bootstrap anymore
+// import Button from 'react-bootstrap/Button'; 
 import styles from './PackagesPage.module.css';
-
 // --- Page Header ---
 const PackagesHero = () => (
     <motion.div
@@ -73,11 +74,10 @@ const PricingSection = () => {
             highlight: true
         }
     ];
-
     return (
         <div className={styles.pricingSection}>
             <Container fluid className="mw-1300">
-                <Row className="g-4 justify-content-center"> {/* Use g-4 for gap */}
+                <Row className="g-4 justify-content-center">
                     {packages.map((pkg, index) => (
                         <Col md={6} lg={4} key={index}>
                             <motion.div
@@ -86,7 +86,6 @@ const PricingSection = () => {
                                 viewport={{ once: true, amount: 0.2 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                {/* Use Bootstrap Card component */}
                                 <Card className={`${styles.packageCard} ${pkg.highlight ? styles.highlightCard : ''}`}>
                                     <Card.Body>
                                         <Card.Title as="h3" className={styles.cardTitle}>{pkg.name}</Card.Title>
@@ -97,7 +96,15 @@ const PricingSection = () => {
                                                 <li key={fIndex}>{feature}</li>
                                             ))}
                                         </ul>
-                                        <Button variant="danger" className={styles.selectButton}>Select Package</Button>
+                                        
+                                        {/* --- 3. REPLACE Button WITH Link --- */}
+                                        <Link 
+                                            to={`/appointment?package=${pkg.id}`} 
+                                            className={`btn btn-danger ${styles.selectButton}`}
+                                        >
+                                            Select Package
+                                        </Link>
+
                                     </Card.Body>
                                 </Card>
                             </motion.div>

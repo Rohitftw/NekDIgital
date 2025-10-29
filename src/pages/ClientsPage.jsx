@@ -15,6 +15,7 @@ const ClientsHero = () => (
     transition={{ duration: 0.8 }}
   >
     <div className={styles.heroOverlay}></div>
+    {/* --- FIX: Added position-relative and z-index-2 --- */}
     <Container fluid className="mw-1300 position-relative z-index-2">
       <h1 className={styles.heroHeading}>Some positive outcomes from 2024</h1>
       <p className={styles.heroSubheading}>

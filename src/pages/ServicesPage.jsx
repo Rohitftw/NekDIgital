@@ -15,7 +15,10 @@ const ServicesHero = () => (
     transition={{ duration: 0.8 }}
   >
     <div className={styles.heroOverlay}></div>
-    <h1 className={styles.heroHeading}>What We Do</h1>
+    {/* --- FIX: Added position-relative and z-index-2 --- */}
+    <Container fluid className="mw-1300 position-relative z-index-2">
+      <h1 className={styles.heroHeading}>What We Do</h1>
+    </Container>
   </motion.div>
 );
 
